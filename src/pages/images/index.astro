@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import MainLayout from "@layouts/MainLayout.astro";
+
+import post05Img from "@images/post-05.png";
+---
+
+<MainLayout>
+  <h2 class="text-5xl text-white">Imagenes</h2>
+
+  <img loading="eager" src="/assets/images/post-05.png" alt="" width="250" height="250">
+
+  <Image src={post05Img} alt="" width="250" height="250" />
+
+  <div style={{ height: '3000px' }}>
+
+  </div>
+
+  <img loading="lazy" src="/assets/images/post-05.png" alt="" width="250" height="250">
+</MainLayout>
