@@ -12,14 +12,41 @@ export const getStaticPaths = (async () => {
 
     return {
       params: { slug: post.slug },
-      props: { post: post.data }
+      props: { post: post }
     }
   });
 
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
+const frontmatter = post.data;
+
+// Metodo lo trae de la colecion creada
+const { Content, headings } = await post.render();
 ---
-<BlogLayout title={post.title}>
-  <h1>Prueba blog</h1>
+<BlogLayout title={frontmatter.title}>
+  <h1 class="text-xs text-gray-500 mb-0">{ frontmatter.title }</h1>
+  <h4 class="text-md text-gray-400 mb-0">{ frontmatter.author }</h4>
+
+  <!-- Tabla de contenido -->
+  <h3>Tabla de contenido</h3>
+  <ol>
+    {
+      headings.map((heading: any, index: number) => (
+        <li>
+          <a href={`#${ heading.slug }`}>
+            { index + 1 } - { heading.text }
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <!-- Contenido -->
+  <Content />
+
+
+  <div class="my-20">
+    <a href="#go-top">Ir Arriba</a>
+  </div>
 </BlogLayout>
