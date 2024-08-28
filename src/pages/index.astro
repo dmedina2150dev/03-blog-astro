@@ -1,9 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import BlogPost from '../components/BlogPost.astro';
-
 import { siteConfig } from '../config/site-config';
-
+import ContainerPosts from 'src/components/ContainerPosts.astro';
 
 ---
 
@@ -20,6 +18,8 @@ import { siteConfig } from '../config/site-config';
       <!-- <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
         { posts.map( post => <BlogPost {...post} />) }
       </div> -->
+
+      <ContainerPosts />
     </div>
   </section>
 </MainLayout>

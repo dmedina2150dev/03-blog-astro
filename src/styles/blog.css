@@ -25,3 +25,7 @@ p {
 a {
   @apply text-blue-500 hover:underline;
 }
+
+img {
+  @apply w-14 h-14 rounded-md;
+}

@@ -4,8 +4,8 @@ import { ViewTransitions } from 'astro:transitions';
 
 import '../styles/blog.css';
 
-const { title, ...rest } = Astro.props;
-const frontmatter = rest.frontmatter;
+const { title } = Astro.props;
+// const frontmatter = rest.frontmatter;
 // console.log(frontmatter);
 ---
 
@@ -15,7 +15,7 @@ const frontmatter = rest.frontmatter;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{frontmatter.title}</title>
+		<title>{title}</title>
     <ViewTransitions />
 	</head>
 	<body class="bg-gray-900 p-2">
