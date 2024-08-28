@@ -1,6 +1,8 @@
 ---
-import { Formatter } from '@utils/formatter';
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import { Formatter } from '@utils/formatter';
 
 interface Props {
   post: CollectionEntry<'blog'>
@@ -12,10 +14,20 @@ const frontmatter = post.data;
 ---
 
 <div class="lg:flex">
-  <img
+  <!-- <img
+    class="object-cover w-full h-56 rounded-lg lg:w-64"
+    src={frontmatter.image.src}
+    alt={frontmatter.title}
+  /> -->
+  <Image
     class="object-cover w-full h-56 rounded-lg lg:w-64"
     src={frontmatter.image}
     alt={frontmatter.title}
+    width={500}
+    height={500}
+    quality={'low'}
+    loading={'lazy'}
+    transition:name={`${post.slug}-image`}
   />
 
   <div class="flex flex-col justify-between py-6 lg:mx-6">
