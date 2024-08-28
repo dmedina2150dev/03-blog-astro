@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import MainLayout from "@layouts/MainLayout.astro";
 
 import post05Img from "@images/post-05.png";
@@ -8,9 +8,59 @@ import post05Img from "@images/post-05.png";
 <MainLayout>
   <h2 class="text-5xl text-white">Imagenes</h2>
 
-  <img loading="eager" src="/assets/images/post-05.png" alt="" width="250" height="250">
+  <div class="flex flex-1 gap-24 justify-between items-center">
+    <span class="m-5 text-white capitalize text-center">Diferencia entre img - Image</span>
+    <img loading="eager" src="/assets/images/post-05.png" alt="" width="250" height="250">
+    
+    <Image src={post05Img} alt="" width="250" height="250" />
+  </div>
 
-  <Image src={post05Img} alt="" width="250" height="250" />
+  
+  <!-- Cosas que podemos hacer con las imagenes -->
+  <h2 class="text-3xl text-center text-white">Aumentando el tamaño</h2>
+  <h3 class="m-5 text-white capitalize">width and height</h3>
+  <Image style={{ width: '250px', height: '250px' }} src={post05Img} alt="" width="500" height="500" /> <!-- Mejorar un poco la calidad con el tamaño -->
+  
+  
+  <h2 class="text-3xl text-center text-white">Calidad</h2>
+
+  <h3 class="m-5 text-white capitalize">Quality - Low</h3>
+  <Image quality="low"  src={post05Img} alt="" width="250" height="250" />
+  
+  <h3 class="m-5 text-white capitalize">Quality - high</h3>
+  <Image quality="high"  src={post05Img} alt="" width="250" height="250" />
+
+  <h3 class="m-5 text-white capitalize">Quality - max</h3>
+  <Image quality="max"  src={post05Img} alt="" width="250" height="250" />
+  
+  <h3 class="m-5 text-white capitalize">Quality - mid</h3>
+  <Image quality="mid"  src={post05Img} alt="" width="250" height="250" />
+  
+  
+  <h2 class="text-3xl text-center text-white">Formatos</h2>
+  
+  
+  <h3 class="m-5 text-white capitalize">Format - jpeg</h3>
+  <Image format="jpeg" src={post05Img} alt="" width="250" height="250" />
+  <h3 class="m-5 text-white capitalize">Format - jpg</h3>
+  <Image format="jpg" src={post05Img} alt="" width="250" height="250" />
+  <h3 class="m-5 text-white capitalize">Format - png</h3>
+  <Image format="png" src={post05Img} alt="" width="250" height="250" />
+  
+  <h3 class="m-5 text-white capitalize">Format - webp</h3>
+  <Image format="webp" src={post05Img} alt="" width="250" height="250" />
+  
+  
+  <h2 class="text-3xl text-center text-white">Picture - imagenes</h2>
+  <Picture
+    formats={['avif', 'webp', 'png']}
+    widths={[240, 540, 720, post05Img.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post05Img.width}px`}
+    src={post05Img} 
+    alt=""
+    width="250"
+    height="250"
+  />
 
   <div style={{ height: '3000px' }}>
 
