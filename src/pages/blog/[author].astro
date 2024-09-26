@@ -11,27 +11,21 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import TypeBlogPost from 'src/components/TypeBlogPost.astro';
 
 export const getStaticPaths = (async () => {
-  const authors = await getCollection('author');
-  const blogPosts = await getCollection('blog');
+  const [authors, posts] = await Promise.all([
+    getCollection('author'),
+    getCollection('blog')
+  ]);
 
-  return authors.map((author) => {
-
-    return {
-      params: { author: author.id },
-      props: { author, blogPosts }
+  return authors.map((author) => ({
+    params: { author: author.id },
+    props: {
+      blogPosts: posts.filter((post: CollectionEntry<'blog'>) => post.data.author.id === author.id ),
+      author: author.data
     }
-  });
+  }));
 }) satisfies GetStaticPaths;
 
 const { blogPosts, author } = Astro.props;
-
-const posts = blogPosts.filter((post: CollectionEntry<'blog'>) => {
-  console.log('post-autor', post.data.author.id)
-  console.log('autor', author.id)
-  if ( post.data.author.id === author.id ) {
-    return post
-  }
-});
 
 ---
 
@@ -45,8 +39,8 @@ const posts = blogPosts.filter((post: CollectionEntry<'blog'>) => {
       <div class="text-md text-gray-400 mb-0 flex flex-row mt-2">
         <Image
           class="rounded-full"
-          src={author.data.avatar}
-          alt={author.data.name}
+          src={author.avatar}
+          alt={author.name}
           width={50}
           height={50}
         />
@@ -58,7 +52,7 @@ const posts = blogPosts.filter((post: CollectionEntry<'blog'>) => {
       </div>
 
       <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-        {posts.map((post: CollectionEntry<'blog'>) => <TypeBlogPost post={post} />)}
+        {blogPosts.map((post: CollectionEntry<'blog'>) => <TypeBlogPost post={post} />)}
       </div>
     </div>
   </section>
