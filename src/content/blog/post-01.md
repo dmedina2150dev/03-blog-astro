@@ -1,17 +1,19 @@
 ---
-title: Explorando Funciones de ES6!!!
+title: Explorando Funciones de ES6
 date: 2023-06-01
 description: Explorando algunas de las nuevas funciones de ES6 en JavaScript.
 author: jane-doe
 # image: https://placehold.co/1400x900/
 image: 'images/post-01.png'
 tags: [JavaScript, ES6, Programming]
-isDraft: true
+isDraft: false
 # layout: ../../layouts/BlogLayout.astro
 ---
 
 {/* # Explorando Funciones de ES6 */}
-# { frontmatter.title }
+<!-- # { frontmatter.title } -->
+
+Explorando Funciones de ES6
 
 JavaScript ES6 introdujo varias funciones nuevas que han hecho que la codificación en JavaScript sea más eficiente y agradable. Vamos a explorar algunas de estas funciones.
 
