@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import Header from 'src/components/Header.astro';
 
 interface Props {
   title?: string;
@@ -18,13 +19,7 @@ const { title } = Astro.props;
 		<ViewTransitions />
 	</head>
 	<body class="bg-gray-900">
-		<header class="bg-gray-900/65 text-white p-4 grid place-content-center">
-			<nav class="flex gap-8">
-				<a class="transition-all ease-in-out p-2 hover:underline" href="/">Inicio</a>
-				<a class="transition-all ease-in-out p-2 hover:underline" href="/blog/1">Blog Paginado</a>
-				<a class="transition-all ease-in-out p-2 hover:underline" href="/authors">Autores</a>
-			</nav>
-		</header>
+		<Header />
 		<main class="mb-10 max-w-5xl px-5 m-auto">
       <slot />
     </main>

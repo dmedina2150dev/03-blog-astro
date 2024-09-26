@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "src/config/site-config";
+
+const links = [
+  { href: '/', text: 'Inicio' },
+  { href: '/blog/1', text: 'Blog Paginado' },
+  { href: '/authors', text: 'Favoritos' },
+]
+
+const { pathname } = Astro.url;
+---
+
+<header class="bg-gray-900/65 text-white p-4 grid place-content-center">
+  <h1
+    class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white text-center"
+  >
+    {siteConfig.title}
+  </h1>
+  <nav class="flex gap-8 mt-2">
+    {
+      links.map(({ href, text }) => (
+        <div>
+          <a
+            href={href}
+            class="text-gray-800 dark:text-gray-200 mx-1.5 sm:mx-6"
+            >{text}</a>
+
+          {
+            pathname === href ? (
+              <div transition:name="menu-line" class="border-b-2 border-blue-500 mx-4" />
+            )
+            : (
+              <div class="border-b-2 border-transparent mx-4" />
+            )
+          }
+        </div>
+      ))
+    }
+  </nav>
+</header>
