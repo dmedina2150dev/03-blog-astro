@@ -8,5 +8,5 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
-  site: 'https://example.com'
+  site: 'https://blog-astro-example.vercel.app/'
 });
