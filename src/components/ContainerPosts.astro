@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import TypeBlogPost from "./TypeBlogPost.astro";
 
-const blogPosts = await getCollection('blog');
+const blogPosts = await getCollection('blog', (post) => post.data.isDraft === false);
 ---
 
 <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
